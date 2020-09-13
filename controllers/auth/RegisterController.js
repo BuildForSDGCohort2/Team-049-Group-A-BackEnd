@@ -11,7 +11,7 @@ var mailgun = require("mailgun-js")({
 });
 
 // models
-const User = require("../../models/User");
+const User = require("../../models/user");
 
 exports.registerUser = async (req, res) => {
   try {
