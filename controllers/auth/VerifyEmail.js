@@ -1,6 +1,6 @@
 "use strict";
 
-const User = require("../../models/User");
+const User = require("../../models/user");
 
 exports.verifyEmail = async (req, res) => {
   const { key } = req.params;
