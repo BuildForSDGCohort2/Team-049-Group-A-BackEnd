@@ -16,7 +16,9 @@ var env = require("dotenv").config();
 
 // var port = 8081;
 var port = normalizePort(process.env.PORT || "3000");
-app.set("port", port);
+app.set("port", ()=>{
+  console.log('Express server listening on port ' + server.address().port);
+});
 
 /**
  * Create HTTP server.
