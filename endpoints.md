@@ -5,7 +5,7 @@ with all necessary information. Ideally this will be on Postman or some other se
 
 ## Documentation Guide
 
-Please add your endpoints in the following manner. All endpoints should accespt JSON.
+Please add your endpoints in the following manner. All endpoints should accept JSON.
 
 ```
 ENDPOINT
@@ -46,3 +46,35 @@ Expected Response
 Method: PUT
 
 Should be passed a key parameter which will be used to verify the user's email.
+
+### /user/login
+
+Method: POST
+
+Expected Post Data
+
+```
+{
+    "email": "example@email.com",
+    "password": "chosen-password"
+}
+```
+
+Expected Response
+
+```
+{
+    "status": "success",
+    "user": {
+        "id": 1,
+        "firstname": "Tunde",
+        "lastname": "Akerele",
+        "phone": "08123456789",
+        "email": "example@email.com",
+        "password": "$2a$10$L1KAUlkiavElXTAL7krxe.miqtOF2S95yQUK3hWhGW8Oj9IszCThO",
+        "created_at": "2020-09-15T04:37:17.000Z",
+        "updated_at": "2020-09-15T04:37:17.000Z"
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJmaXJzdG5hbWUiOiJUdW5kZSIsImxhc3RuYW1lIjoiQWtlcmVsZSIsInBob25lIjoiMDgwNjI1NzU1MzEiLCJlbWFpbCI6ImJhYnNha2VAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmEkMTAkTDFLQVVsa2lhdkVsWFRBTDdrcnhlLm1pcXRPRjJTOTV5UVVLM2hXaEdXOE9qOUlzekNUaE8iLCJjcmVhdGVkX2F0IjoiMjAyMC0wOS0xNVQwNDozNzoxNy4wMDBaIiwidXBkYXRlZF9hdCI6IjIwMjAtMDktMTVUMDQ6Mzc6MTcuMDAwWiJ9LCJpYXQiOjE2MDAxNDcxODIsImV4cCI6MTYwMDE0OTgxMH0.W_Ud8mLEbS0hJxCvLlekYkhTMIfG0q8bEdA1h8uUt1A"
+}
+```
