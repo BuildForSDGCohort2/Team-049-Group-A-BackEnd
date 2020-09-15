@@ -10,6 +10,7 @@ const RegisterController = require("../controllers/auth/RegisterController");
 const VerifyEmail = require("../controllers/auth/VerifyEmail");
 const AdminLoginController = require("../controllers/admin/AdminLoginController");
 const UserLogin = require("../controllers/auth/UserLogin");
+const ForgotPasswordController = require("../controllers/auth/ForgotPasswordController");
 
 router.get("/", baseController.renderData);
 router.post("/user/register", RegisterController.registerUser);
@@ -18,6 +19,7 @@ router.put("/user/verify/email/:key", VerifyEmail.verifyEmail);
 router.post("/admin/login", AdminLoginController.loginAdmin);
 // User Routes
 router.post("/user/login", UserLogin.loginUser);
+router.post("/user/forgot-password", ForgotPasswordController.forgotPassword);
 
 // not found route
 router.use((req, res, next) => {
