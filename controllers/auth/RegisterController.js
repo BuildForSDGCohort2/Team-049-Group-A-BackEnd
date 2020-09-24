@@ -37,7 +37,7 @@ exports.registerUser = async (req, res) => {
       subject: "Please verify your email",
       html: `Click 
       <a href='http://${req.headers.host}/user/verify/email/${userData.key}'>Here</a>
-      to verify your email! or click the following link http://${req.headers.host}/user/verify/email/${userData.key}`,
+      to verify your email!`,
     };
 
     mailgun.messages().send(data, function (errorSendingMail, body) {
