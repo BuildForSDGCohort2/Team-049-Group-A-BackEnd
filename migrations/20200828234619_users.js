@@ -9,7 +9,7 @@ exports.up = function (knex) {
     table.string("email", 255).unique().nullable();
     table.string("password", 60).notNullable();
     table.boolean("verified").defaultTo(0);
-    table.string("key", 6).notNullable();
+    table.string("key", 10).notNullable();
     table.timestamp("created_at").defaultTo(knex.fn.now());
     table.timestamp("updated_at").defaultTo(knex.fn.now());
   });
