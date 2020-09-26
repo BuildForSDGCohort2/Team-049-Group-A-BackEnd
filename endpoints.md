@@ -160,3 +160,24 @@ Expected Response
     "message": "Password reset email sent"
 }
 ```
+### /user/reset-password
+
+Method: PUT
+
+Expected Post Data
+
+```
+{
+    "resetKey": "reset-key",
+    "newPassword": "new-password"
+}
+```
+
+Expected Response
+
+```
+{
+    "status": "Success",
+    "message": "Password changed successfully"
+}
+```

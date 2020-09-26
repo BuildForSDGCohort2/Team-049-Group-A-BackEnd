@@ -37,11 +37,9 @@ exports.forgotPassword = async (req, res) => {
 
     mailgun.messages().send(data, function (errorSendingMail, body) {
       if (errorSendingMail) {
-        console.log("There was an error sending mail", errorSendingMail);
         res.status(201).json({
           status: "failure",
-          message:
-            "Password reset error",
+          message: errorSendingMail.message,
         });
       } else {
         res.status(201).json({
@@ -51,7 +49,6 @@ exports.forgotPassword = async (req, res) => {
       }
     });
   } catch (errorResetingPassword) {
-    console.log("There has been an error", errorResetingPassword);
     res.status(400).json({
       status: "error",
       message: errorResetingPassword.message,
