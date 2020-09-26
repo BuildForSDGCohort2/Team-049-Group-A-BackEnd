@@ -35,22 +35,24 @@ exports.registerUser = async (req, res) => {
       from: `${process.env.FROM_NAME} <${process.env.FROM_MAIL}>`,
       to: userData.email,
       subject: "Please verify your email",
-      text: `Click the following link to verify your email!:
-      <a href="${req.hostname / userData.key}">Here</a> or click here ${
-        req.hostname / userData.key
-      }`,
+      html: `Click 
+      <a href='http://${req.headers.host}/user/verify/email/${userData.key}'>Here</a>
+      to verify your email!`,
     };
 
-    mailgun.messages().send(data, function(errorSendingMail, body) {
+    mailgun.messages().send(data, function (errorSendingMail, body) {
       if (errorSendingMail) {
         console.log("There was an error sending mail", errorSendingMail);
         res.status(201).json({
           status: "failure",
-          message: "You have been registered but we failed to send you an email",
+          message:
+            "You have been registered but we failed to send you an email",
         });
       } else {
-        const token = jwt.sign({ user: userData },
-          process.env.ACCESS_TOKEN_SECRET, {
+        const token = jwt.sign(
+          { user: userData },
+          process.env.ACCESS_TOKEN_SECRET,
+          {
             expiresIn: process.env.JWT_EXP,
           }
         );

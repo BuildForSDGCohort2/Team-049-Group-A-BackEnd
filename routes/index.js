@@ -10,11 +10,12 @@ const RegisterController = require("../controllers/auth/RegisterController");
 const VerifyEmail = require("../controllers/auth/VerifyEmail");
 const AdminLoginController = require("../controllers/admin/AdminLoginController");
 const UserLogin = require("../controllers/auth/UserLogin");
-const ForgotPasswordController = require("../controllers/auth/ForgotPasswordController");
+const ForgotPassword = require("../controllers/auth/ForgotPassword");
 
 router.get("/", baseController.renderData);
 router.post("/user/register", RegisterController.registerUser);
-router.put("/user/verify/email/:key", VerifyEmail.verifyEmail);
+router.get("/user/verify/email/:key", VerifyEmail.verifyEmail);
+router.put("/user/forgot-password", ForgotPassword.forgotPassword);
 // Admin Routes
 router.post("/admin/login", AdminLoginController.loginAdmin);
 // User Routes
