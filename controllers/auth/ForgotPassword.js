@@ -20,11 +20,16 @@ exports.forgotPassword = async (req, res) => {
   });
 
   try {
-  const user = await User.query().patch({ key: key }).where("email", email);
+    const user = await User.query().patch({ key: key }).where("email", email);
 
-  if(!user) {
-    res.status(400).json({ status: "Failed", message: "Password reset error: Unable to update user key" });
-  }
+    if (!user) {
+      res
+        .status(400)
+        .json({
+          status: "Failed",
+          message: "Password reset error: Unable to update user key",
+        });
+    }
 
     const data = {
       from: `${process.env.FROM_NAME} <${process.env.FROM_MAIL}>`,

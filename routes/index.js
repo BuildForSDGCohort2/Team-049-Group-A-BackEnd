@@ -22,7 +22,6 @@ router.put("/user/reset-password", ResetPassword.resetPassword);
 router.post("/admin/login", AdminLoginController.loginAdmin);
 // User Routes
 router.post("/user/login", UserLogin.loginUser);
-router.post("/user/forgot-password", ForgotPasswordController.forgotPassword);
 
 // not found route
 router.use((req, res, next) => {
